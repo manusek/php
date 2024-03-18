@@ -118,38 +118,20 @@ include('trip.php')
             </tr>
         </thead>
         <tbody>
+        {% if trips %}
+          {% for element in trips %}
             <tr>
-                <th scope="row">1</th>
-                <td>Kolorado</td>
-                <td>Ameryka Północna</td>
-                <td>USA</td>
-                <td>7 dni</td>
-                <td>19000 PLN</td>
+                <th scope="row">{{element.getId()}}</th>
+                <td>{{element.getName()}}</td>
+                <td>{{element.getContinent()}}</td>
+                <td>{{element.getCountry()}}</td>
+                <td>{{element.getPeroid()}}</td>
+                <td>{{element.getPrice()}}</td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Alaska</td>
-                <td>Ameryka Północna</td>
-                <td>USA</td>
-                <td>10 dni</td>
-                <td>24000 PLN</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Everest</td>
-                <td>Azja</td>
-                <td>Chiny</td>
-                <td>7 dni</td>
-                <td>22000 PLN</td>
-            </tr>
-            <tr>
-                <th scope="row">4</th>
-                <td>Alpy</td>
-                <td>Europa</td>
-                <td>Austria</td>
-                <td>6 dni</td>
-                <td>16000 PLN</td>
-            </tr>
+            {% endfor %}
+            {% else %}
+                 <p class="text-danger">Brak dostępnych wycieczek</p>
+            {% endif %}
         </tbody>
     </table>
   </div>
