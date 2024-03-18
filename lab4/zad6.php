@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "ai1_lab4";
+        $dbname = "ail_lab4";
     
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

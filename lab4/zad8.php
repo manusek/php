@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "ai1_lab4";
+$dbname = "ail_lab4";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -10,6 +10,13 @@ try {
 
     //Pobrać zawartość tabeli questions
     //...
+
+    //zapytanie i jego wykonanie
+    $stmt = $conn->prepare("SELECT * FROM questions");
+    $stmt->execute();
+
+    //pobieranie
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
     echo "Fail: " . $e->getMessage();
@@ -34,15 +41,23 @@ try {
                 <table class="table table-hover table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">...</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Grupa</th>
+                            <th scope="col">Cena</th>
+                            <th scope="col">Komentarz</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach($result as $row ){ ?>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>...</td>
+                            <th scope="row"><?php echo $row['id']?></th>
+                            <td scope="row"><?php echo $row['email']?></td>
+                            <td scope="row"><?php echo $row['offer_type']?></td>
+                            <td scope="row"><?php echo $row['budget']?></td>
+                            <td scope="row"><?php echo $row['comment']?></td>
                         </tr>
+                       <?php } ?>
                     </tbody>
                 </table>
             </div>
