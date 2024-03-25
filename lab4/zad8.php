@@ -49,16 +49,17 @@ try {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($result as $row ){ ?>
+                        <?php foreach($result as $row){ ?>
                         <tr>
                             <th scope="row"><?php echo $row['id']?></th>
                             <td scope="row"><?php echo $row['email']?></td>
                             <td scope="row"><?php echo $row['offer_type']?></td>
                             <td scope="row"><?php echo $row['budget']?></td>
-                            <td scope="row"><?php echo $row['comment']?></td>
+                            <td scope="row"><?php echo htmlspecialchars($row['comment'])?></td>  
                         </tr>
                        <?php } ?>
                     </tbody>
+                    <!-- konwertuje znaki html na encje -->
                 </table>
             </div>
         </div> 

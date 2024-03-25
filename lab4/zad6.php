@@ -2,8 +2,8 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-    // Check if form is submitted
-    if(isset($_GET['submit'])){
+    
+    if(isset($_GET['submit'])){   //sprawdzanie czy formularz jest zaznaczony
         $email = $_GET['email'];
         $option = $_GET['option'];
         $price = $_GET['price'];
@@ -19,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "Connected successfully. <br>";
 
-            // Prepare and execute SQL statement
             $stmt = $conn->prepare("INSERT INTO questions (email, offer_type, budget, comment) VALUES (?, ?, ?, ?)");
             $stmt->bindParam(1, $email);
             $stmt->bindParam(2, $option);
